@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Ateleir 2C6 POO gr 101");
+            Console.WriteLine("Atelier 2C6 POO gr 101");
         }
     }
 }
