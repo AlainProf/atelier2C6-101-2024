@@ -41,6 +41,12 @@
         static void ExecHumanite()
         {
             Console.WriteLine("Humanité");
+
+            humain h1 = new humain("Albert", new DateTime(1889, 1, 1));
+            h1.Afficher();
+
+
+
             util.pause();
         }
 
