@@ -1,4 +1,9 @@
-﻿namespace atelier2C6_101_2024
+﻿//-------------------------------
+//  Fichier Program.cs
+//  Auteur: Alain Martel
+//  Création: 2024-01-31 
+//-------------------------------
+namespace Atelier2C6_101_2024
 {
     internal class Program
     {
@@ -7,16 +12,19 @@
             bool go = true;
             while (go)
             {
-                util.titre("Atelier 2C6 gr 101\n__________________________________");
+                Util.Titrer("Atelier 2C6 gr 101");
                 AfficherMenu();
                 ExecuterChoix();
             }
         }
 
 
+        //-------------------------------
+        //
+        //-------------------------------
         static void ExecuterChoix()
         {
-            char choix = util.SaisirChar();
+            char choix = Util.SaisirChar();
             string option = choix.ToString().ToUpper();
 
             switch(option)
@@ -33,23 +41,37 @@
                     break;
             }
         }
+        //-------------------------------
+        //
+        //-------------------------------
         static void ExecFinancier()
         {
-            financier fin = new financier();
-            fin.exec();
+            Financier fin = new Financier();
+            fin.Exec();
         }
+        //-------------------------------
+        //
+        //-------------------------------
         static void ExecHumanite()
         {
-            Console.WriteLine("Humanité");
+            Util.Titrer("Humanité");
 
-            humain h1 = new humain("Albert", new DateTime(1889, 1, 1));
+            Humain h1 = new Humain("Albert", new DateTime(1889, 1, 1));
             h1.Afficher();
 
+            Humain h2 = new Humain("Béatrice");
+            h2.Afficher();
+
+            Humain h3 = new Humain();
+            h3.Afficher();
 
 
-            util.pause();
+            Util.Pause();
         }
 
+        //-------------------------------
+        //
+        //-------------------------------
         static void AfficherMenu()
         {
             Console.WriteLine("f- Financier");

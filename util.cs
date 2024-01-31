@@ -1,25 +1,45 @@
-﻿using System;
+﻿//-------------------------------
+//  Fichier Util.cs
+//  Auteur: Alain Martel
+//  Création: 2024-01-31 
+//-------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace atelier2C6_101_2024
+namespace Atelier2C6_101_2024
 {
-    internal class util
+    internal class Util
     {
-        public static void viderEcran()
+        //-------------------------------
+        //
+        //-------------------------------
+        public static void ViderEcran()
         {
             Console.Clear();
             Console.WriteLine("\x1b[3J");
         }
 
-        public static void titre(string leTitre)
+        //-------------------------------
+        //
+        //-------------------------------
+        public static void Titrer(string leTitre)
         {
-            viderEcran();
+            ViderEcran();
             Console.WriteLine(leTitre);
+            for(int i = 0; i < leTitre.Length; i++)
+            {
+                Console.Write("-");
+            }
+            Console.WriteLine();    
         }
 
+        //-------------------------------
+        //
+        //-------------------------------
         public static char SaisirChar()
         {
             ConsoleKeyInfo keyInfo;
@@ -27,21 +47,26 @@ namespace atelier2C6_101_2024
             return keyInfo.KeyChar;
         }
 
-        public static double saisirUnDouble(string nomDuDouble)
+        //-------------------------------
+        //
+        //-------------------------------
+        public static double SaisirUnDouble(string nomDuDouble)
         {
             Console.WriteLine(nomDuDouble + ":");
-            string input = Console.ReadLine();
+            string? input = Console.ReadLine();
 
 
             if (double.TryParse(input, out double resultat))
             {
                 return resultat;
             }
-            else
-                return 0.0;
+            return 0.0;
         }
 
-        public static void pause()
+        //-------------------------------
+        //
+        //-------------------------------
+        public static void Pause()
         {
             Console.WriteLine(" appuyer une touche...");
             Console.ReadKey();
