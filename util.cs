@@ -72,5 +72,20 @@ namespace Atelier2C6_101_2024
             Console.ReadKey();
         }
 
+        //-------------------------------
+        //
+        //-------------------------------
+        public static void SepST(string s)
+        {
+            Console.WriteLine("------------" + s + "------------");
+        }
+        //-------------------------------
+        //
+        //-------------------------------
+        public void Sep(string s)
+        {
+            Console.WriteLine("***********" + s + "************");
+        }
+
     }
 }

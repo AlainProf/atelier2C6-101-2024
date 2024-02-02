@@ -16,6 +16,10 @@ namespace Atelier2C6_101_2024
         private string _nom;
         DateTime _naissance;
         DateTime _deces;
+        int _nas;
+
+        static int _compteur=0;
+
 
         //-------------------------------
         //
@@ -24,6 +28,9 @@ namespace Atelier2C6_101_2024
         {
             _nom = "incognito";
             _naissance = new DateTime(1,1,1);
+            _compteur++;
+            _nas = _compteur;
+
         }
         //-------------------------------
         //
@@ -32,6 +39,9 @@ namespace Atelier2C6_101_2024
         {
             _nom = n;
             _naissance = DateTime.Now;
+            _compteur++;
+            _nas = _compteur;
+
         }
 
         //-------------------------------
@@ -41,6 +51,9 @@ namespace Atelier2C6_101_2024
         {
             _nom = n;
             _naissance = nais;
+            _compteur++;
+            _nas = _compteur;
+
         }
 
         //-------------------------------
@@ -56,7 +69,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         public void Afficher()
         {
-            Console.WriteLine(_nom + " né le " +  _naissance.ToShortDateString() + " agé de " + Age() + " ans ");
+            Console.WriteLine(_nom + "(" + _nas + ") né le " +  _naissance.ToShortDateString() + " agé de " + Age() + " ans ");
         }
 
         //-------------------------------
@@ -68,6 +81,15 @@ namespace Atelier2C6_101_2024
 
             int deltaAn = (int) (delta  / 10000000 / (60 * 60 * 24 * 365.24));
             return deltaAn;
+        }
+
+        public string GetNom()
+        {
+            return _nom;
+        }
+        public DateTime GetNaissance()
+        {
+            return _naissance;
         }
     }
 }
