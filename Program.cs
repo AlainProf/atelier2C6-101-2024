@@ -15,6 +15,7 @@ namespace Atelier2C6_101_2024
                 Util.Titrer("Atelier 2C6 gr 101");
                 AfficherMenu();
                 ExecuterChoix();
+                go = false;
             }
         }
 

@@ -61,7 +61,7 @@ namespace Atelier2C6_101_2024
 
         static int comparerHumain(Humain humA, Humain humB)
         {
-            return humA.GetNom().CompareTo(humB.GetNom());
+            return humA._Nom.CompareTo(humB._Nom);
         }
         static int comparerAge(Humain humA, Humain humB)
         {

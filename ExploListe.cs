@@ -10,28 +10,102 @@ namespace Atelier2C6_101_2024
     {
         const int NB_ELEMENTS = 10;
         static List<int> _lstEntiers = new List<int>();
+        static List<Humain> _lstHumains = new List<Humain>();
+        static string[] _noms = new string[10];
+
         static Random _r = new Random();
         static public void Exec()
         {
             Util.Titrer("Exploration de listes");
-            ListeEntiers();
 
-            Util.Pause();
+            _noms[0] = "Esteban";
+            _noms[1] = "Etienne";
+            _noms[2] = "Raphael";
+            _noms[3] = "Liliane";
+            _noms[4] = "Samuel";
+            _noms[5] = "Félix";
+            _noms[6] = "Georges";
+            _noms[7] = "Charles-Etienne";
+            _noms[8] = "Fernando";
+            _noms[9] = "Nizar";
+            //ExecListeEntiers();
+
+            ExecListeObjets();
+
+            //Util.Pause();
 
             
         }
+        static void ExecListeObjets()
+        {
+            for (int i = 0; i < NB_ELEMENTS; i++)
+            {
+                _lstHumains.Add(new Humain(_noms[_r.Next(0, 10)], new DateTime(_r.Next(1964, 2007), _r.Next(1, 13), _r.Next(1, 29))));
+            }
 
-        static void ListeEntiers()
+            _lstHumains[9]._Nom = "Zébulon";
+            _lstHumains[9]._Residence = new Adresse("485 app 32", "rue Fournier", "Singe et Rum", "Québec", "J7Z 4V2" );
+
+            Util.SepST("Liste humain initale");
+            AfficherListeHumain();
+
+            Util.SepST("Liste humain triée (ordre alpha)");
+            _lstHumains.Sort(CompareHumain);
+            AfficherListeHumain();
+
+            Util.SepST("Liste humain triée (ordre age)");
+            _lstHumains.Sort(CompareAge);
+            AfficherListeHumain();
+
+            Util.SepST("Liste humain triée (ordre alpha inverse)");
+            _lstHumains.Sort((a, b) => { return b._Nom.CompareTo(a._Nom); });
+            AfficherListeHumain();
+
+            Util.SepST("Liste humain triée (ordre alpha)");
+            _lstHumains.Reverse();
+            AfficherListeHumain();
+
+            Util.SepST("Liste humain clearée");
+            _lstHumains.Clear();
+            AfficherListeHumain();
+
+        }
+
+        static int CompareAge(Humain humB, Humain humA)
+        {
+            if (humA.GetNaissance() < humB.GetNaissance())
+                return -1;
+            if (humA.GetNaissance() > humB.GetNaissance())
+                return 1;
+            return 0;
+        }
+
+        static int CompareHumain(Humain humA, Humain humB)
+        {
+            return humA._Nom.CompareTo(humB._Nom);
+        }
+
+        static void ExecListeEntiers()
         {
             for (int i = 0; i < NB_ELEMENTS; i++) 
             {
-                _lstEntiers.Add(_r.Next(-189, 10000));
+                _lstEntiers.Add(_r.Next(0, 1000));
             }
 
             Util.SepST("Liste initale");
             AfficherListe();
 
+            Util.SepST("Liste triée");
+            _lstEntiers.Sort();
+            AfficherListe();
 
+            Util.SepST("Liste inversée");
+            _lstEntiers.Reverse();
+            AfficherListe();
+
+            Util.SepST("Liste Clearée");
+            _lstEntiers.Clear();
+            AfficherListe();
 
         }
 
@@ -42,5 +116,21 @@ namespace Atelier2C6_101_2024
                 Console.WriteLine(i + ":" + _lstEntiers[i]);
             }
         }
+
+        static void AfficherListeHumain()
+        {
+            for (int i = 0; i < _lstHumains.Count; i++)
+            {
+                if (_lstHumains[i] != null)
+                {
+                    _lstHumains[i].Afficher();
+                }
+                else
+                {
+                    Console.WriteLine("humain nul");
+                }
+            }
+        }
+                
     }
 }

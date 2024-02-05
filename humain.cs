@@ -13,10 +13,41 @@ namespace Atelier2C6_101_2024
 {
     internal class Humain
     {
+
+        /* 
+        // Méthode classique
         private string _nom;
-        DateTime _naissance;
-        DateTime _deces;
-        int _nas;
+
+        public string GetNom()
+        {
+            return _nom;
+        }
+
+        public void SetNom(string nom)
+        {
+            _nom = nom;
+        }
+        */
+
+        // Méthode property
+        /*
+        private string _nom;
+        public string _Nom
+        {
+            get { return _nom; }
+            set { _nom = value; }
+        }
+        */
+
+        // Méthode property auto
+
+        public string _Nom {  get; set; }   
+
+        public DateTime _Naissance { get; set; }
+        public DateTime _Deces { get; set; }
+        public int _Nas { get;  set; }
+
+        public Adresse _Residence { get; set; }
 
         static int _compteur=0;
 
@@ -26,10 +57,11 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         public Humain()
         {
-            _nom = "incognito";
-            _naissance = new DateTime(1,1,1);
+            _Nom = "incognito";
+            _Naissance = new DateTime(1,1,1);
             _compteur++;
-            _nas = _compteur;
+            _Nas = _compteur;
+            _Residence = new Adresse(); 
 
         }
         //-------------------------------
@@ -37,10 +69,11 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         public Humain(string n)
         {
-            _nom = n;
-            _naissance = DateTime.Now;
+            _Nom = n;
             _compteur++;
-            _nas = _compteur;
+            _Nas = _compteur;
+            _Residence = new Adresse();
+
 
         }
 
@@ -49,10 +82,12 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         public Humain(string n, DateTime nais)
         {
-            _nom = n;
-            _naissance = nais;
+            _Nom = n;
+            _Naissance = nais;
             _compteur++;
-            _nas = _compteur;
+            _Nas = _compteur;
+            _Residence = new Adresse();
+
 
         }
 
@@ -61,7 +96,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         public void Mourir()
         {
-            _deces = DateTime.Now;   
+            _Deces = DateTime.Now;   
         }
 
         //-------------------------------
@@ -69,7 +104,10 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         public void Afficher()
         {
-            Console.WriteLine(_nom + "(" + _nas + ") né le " +  _naissance.ToShortDateString() + " agé de " + Age() + " ans ");
+            Console.WriteLine(_Nom + "(" + _Nas + ") né le " +  _Naissance.ToShortDateString() + " agé de " + Age() + " ans ");
+
+            if (_Residence._NumCivique != "0")
+               _Residence.Afficher();
         }
 
         //-------------------------------
@@ -77,19 +115,15 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         private int Age()
         {
-            double delta = DateTime.Now.Ticks - _naissance.Ticks;  
+            double delta = DateTime.Now.Ticks - _Naissance.Ticks;  
 
             int deltaAn = (int) (delta  / 10000000 / (60 * 60 * 24 * 365.24));
             return deltaAn;
         }
 
-        public string GetNom()
-        {
-            return _nom;
-        }
         public DateTime GetNaissance()
         {
-            return _naissance;
+            return _Naissance;
         }
     }
 }
