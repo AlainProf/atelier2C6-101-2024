@@ -19,6 +19,24 @@ namespace Atelier2C6_101_2024
             }
         }
 
+        //-------------------------------
+        //
+        //-------------------------------
+        static void AfficherMenu()
+        {
+            Console.WriteLine("F- Financier");
+            Console.WriteLine("H- Humanité");
+            Console.WriteLine("T- Tableau (explo)");
+            Console.WriteLine("L- Liste (explo)");
+            Console.WriteLine("C- Chargement de fichiers");
+
+            Console.WriteLine();
+
+            Console.WriteLine("Q- Quitter");
+            Console.Write("\nvotre choix:");
+        }
+
+
 
         //-------------------------------
         //
@@ -41,6 +59,9 @@ namespace Atelier2C6_101_2024
                     break;
                 case ("L"):
                     ExploListe.Exec();
+                    break;
+                case ("C"):
+                    ExploFichier.Exec();
                     break;
 
 
@@ -78,21 +99,6 @@ namespace Atelier2C6_101_2024
             Util.Pause();
         }
 
-        //-------------------------------
-        //
-        //-------------------------------
-        static void AfficherMenu()
-        {
-            Console.WriteLine("F- Financier");
-            Console.WriteLine("H- Humanité");
-            Console.WriteLine("T- Tableau (explo)");
-            Console.WriteLine("L- Liste (explo)");
-
-            Console.WriteLine();    
-
-            Console.WriteLine("Q- Quitter");
-            Console.Write("\nvotre choix:");
-        }
 
     }
 }

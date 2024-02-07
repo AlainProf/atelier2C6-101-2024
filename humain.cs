@@ -87,8 +87,17 @@ namespace Atelier2C6_101_2024
             _compteur++;
             _Nas = _compteur;
             _Residence = new Adresse();
-
-
+        }
+        //-------------------------------
+        //
+        //-------------------------------
+        public Humain(string n, DateTime nais, Adresse naissance)
+        {
+            _Nom = n;
+            _Naissance = nais;
+            _compteur++;
+            _Nas = _compteur;
+            _Residence = naissance;
         }
 
         //-------------------------------
