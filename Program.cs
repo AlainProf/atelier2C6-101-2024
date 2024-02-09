@@ -29,6 +29,8 @@ namespace Atelier2C6_101_2024
             Console.WriteLine("T- Tableau (explo)");
             Console.WriteLine("L- Liste (explo)");
             Console.WriteLine("C- Chargement de fichiers");
+            Console.WriteLine("R- ref et out, comme,t ça marche");
+            Console.WriteLine("X- TicTacToe");
 
             Console.WriteLine();
 
@@ -63,6 +65,13 @@ namespace Atelier2C6_101_2024
                 case ("C"):
                     ExploFichier.Exec();
                     break;
+                case ("R"):
+                    ExploRefEtOut();
+                    break;
+                case ("X"):
+                    PartieTicTacToe pTTT = new PartieTicTacToe();
+                    pTTT.Jouer();
+                    break;
 
 
                 case ("Q"):
@@ -71,6 +80,42 @@ namespace Atelier2C6_101_2024
                     break;
             }
         }
+
+        //-------------------------------
+        //
+        //-------------------------------
+        static void ExploRefEtOut()
+        {
+            Util.Titrer("Exemple d'utilisation de ref et out");
+
+            int p = 10;
+            Console.WriteLine($"valeur initiale de P:{p}");
+
+            f1(p);
+            Console.WriteLine($"post f1():{p}");
+            f2(ref p);
+            Console.WriteLine($"post f2():{p}");
+            f3(p, out int pOut);
+            Console.WriteLine($"post f3():{pOut}");
+            pOut *= pOut;
+            Console.WriteLine($"Le carré {pOut}");
+        }
+
+        static void f1(int p)
+        {
+            p++;
+        }
+        static void f2(ref int p)
+        {
+            p++;
+        }
+        static void f3(int p, out int pOut)
+        {
+            pOut = p;
+            pOut++;
+        }
+
+
         //-------------------------------
         //
         //-------------------------------
