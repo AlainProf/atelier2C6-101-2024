@@ -3,6 +3,9 @@
 //  Auteur: Alain Martel
 //  Création: 2024-01-31 
 //-------------------------------
+
+using Atelier2C6_101_2024.Connect4;
+
 namespace Atelier2C6_101_2024
 {
     internal class Program
@@ -31,6 +34,8 @@ namespace Atelier2C6_101_2024
             Console.WriteLine("C- Chargement de fichiers");
             Console.WriteLine("R- ref et out, comme,t ça marche");
             Console.WriteLine("X- TicTacToe");
+            Console.WriteLine("O- Connect 4 ");
+            Console.WriteLine("D- Dessiner à la console ");
 
             Console.WriteLine();
 
@@ -71,6 +76,15 @@ namespace Atelier2C6_101_2024
                 case ("X"):
                     PartieTicTacToe pTTT = new PartieTicTacToe();
                     pTTT.Jouer();
+                    break;
+                case ("O"):
+                    PartieConnect4 pConn4 = new PartieConnect4();
+                    pConn4.Jouer();
+                    break;
+
+                case ("D"):
+                    Ecran ecran = new Ecran();
+                    ecran.Exec();
                     break;
 
 
