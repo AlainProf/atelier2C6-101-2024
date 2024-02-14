@@ -14,6 +14,18 @@ namespace Atelier2C6_101_2024
 {
     internal class Util
     {
+        public static string[] _noms = new string[] {"Esteban", "Etienne", "Raphael", "Liliane", "Samuel", "Félix", "Georges",
+        "Charles-Etienne", "Fernando", "Nizar"};
+
+        public static Random rdm = new Random();
+
+        public const int ERR_DATE_NULLE = -1;
+        public const int ERR_DATE_INCOMPLETE = -2;
+        public const int ERR_ANNEE_HORS_LIMITE = -3;
+        public const int ERR_ANNEE_INVALIDE = -4;
+        public const int ERR_MOIS_HORS_LIMITE = -5;
+
+
         //-------------------------------
         //
         //-------------------------------

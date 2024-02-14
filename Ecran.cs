@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,7 +40,8 @@ namespace Atelier2C6_101_2024
         void Epilepsis()
         {
             Init();
-            while (true)
+            int compteur = 0;
+            while (compteur < 1)
             {
                 for (int y = 0; y < _hauteur; y++)
                 {
@@ -59,6 +61,21 @@ namespace Atelier2C6_101_2024
                     }
                     Thread.Sleep(1);
                 }
+                compteur++;
+            }
+            Init((int)ConsoleColor.Black);
+            int ITERATION_VISEES = (_hauteur * _largeur);
+            int iter = 0;
+            Random random = new Random();
+            while(iter < ITERATION_VISEES)
+            {
+                int x = random.Next(0, _largeur - 1);
+                int y = random.Next(0, _hauteur - 1);
+                Console.BackgroundColor = (ConsoleColor)random.Next(1, 16);
+                Console.SetCursorPosition(x,y); 
+                Console.Write(" ");
+                iter++;
+                //Thread.Sleep(1);
             }
         }
 
@@ -103,9 +120,9 @@ namespace Atelier2C6_101_2024
 
         }
 
-        void Init(int back = (int) ConsoleColor.DarkBlue, int fore = (int)ConsoleColor.Yellow)
+        public void Init(int back = (int) ConsoleColor.DarkBlue, int fore = (int)ConsoleColor.Yellow)
         {
-            Console.BackgroundColor = (ConsoleColor) back;
+            Console.BackgroundColor = (ConsoleColor)back;
             Console.ForegroundColor = (ConsoleColor)fore;
             Util.ViderEcran();
         }

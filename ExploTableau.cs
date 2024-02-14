@@ -59,10 +59,6 @@ namespace Atelier2C6_101_2024
             AfficherTabHum();
         }
 
-        static int comparerHumain(Humain humA, Humain humB)
-        {
-            return humA._Nom.CompareTo(humB._Nom);
-        }
         static int comparerAge(Humain humA, Humain humB)
         {
             if (humA.GetNaissance().Ticks > humB.GetNaissance().Ticks)

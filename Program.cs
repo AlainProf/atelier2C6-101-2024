@@ -12,6 +12,8 @@ namespace Atelier2C6_101_2024
     {
         static void Main(string[] args)
         {
+            Ecran ecran = new Ecran();
+            ecran.Init(0,15);
             bool go = true;
             while (go)
             {
@@ -31,7 +33,7 @@ namespace Atelier2C6_101_2024
             Console.WriteLine("H- Humanité");
             Console.WriteLine("T- Tableau (explo)");
             Console.WriteLine("L- Liste (explo)");
-            Console.WriteLine("C- Chargement de fichiers");
+            Console.WriteLine("E- Explo de fichiers");
             Console.WriteLine("R- ref et out, comme,t ça marche");
             Console.WriteLine("X- TicTacToe");
             Console.WriteLine("O- Connect 4 ");
@@ -67,7 +69,7 @@ namespace Atelier2C6_101_2024
                 case ("L"):
                     ExploListe.Exec();
                     break;
-                case ("C"):
+                case ("E"):
                     ExploFichier.Exec();
                     break;
                 case ("R"):

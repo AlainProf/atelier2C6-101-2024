@@ -11,23 +11,14 @@ namespace Atelier2C6_101_2024
         const int NB_ELEMENTS = 10;
         static List<int> _lstEntiers = new List<int>();
         static List<Humain> _lstHumains = new List<Humain>();
-        static string[] _noms = new string[10];
+        
 
         static Random _r = new Random();
         static public void Exec()
         {
             Util.Titrer("Exploration de listes");
 
-            _noms[0] = "Esteban";
-            _noms[1] = "Etienne";
-            _noms[2] = "Raphael";
-            _noms[3] = "Liliane";
-            _noms[4] = "Samuel";
-            _noms[5] = "Félix";
-            _noms[6] = "Georges";
-            _noms[7] = "Charles-Etienne";
-            _noms[8] = "Fernando";
-            _noms[9] = "Nizar";
+           
             //ExecListeEntiers();
 
             ExecListeObjets();
@@ -40,7 +31,7 @@ namespace Atelier2C6_101_2024
         {
             for (int i = 0; i < NB_ELEMENTS; i++)
             {
-                _lstHumains.Add(new Humain(_noms[_r.Next(0, 10)], new DateTime(_r.Next(1964, 2007), _r.Next(1, 13), _r.Next(1, 29))));
+                _lstHumains.Add(new Humain(Util._noms[_r.Next(0, 10)], new DateTime(_r.Next(1964, 2007), _r.Next(1, 13), _r.Next(1, 29))));
             }
 
             _lstHumains[9]._Nom = "Zébulon";
