@@ -114,7 +114,7 @@ namespace Atelier2C6_101_2024
             {
                 if (_lstHumains[i] != null)
                 {
-                    _lstHumains[i].Afficher();
+                   // _lstHumains[i].Afficher();
                 }
                 else
                 {

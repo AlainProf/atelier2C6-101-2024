@@ -112,7 +112,7 @@ namespace Atelier2C6_101_2024
             {
                 if (_tabHumains[i] != null)
                 {
-                    _tabHumains[i].Afficher();
+                   // _tabHumains[i].Afficher();
                 }
                 else
                 {

@@ -19,17 +19,25 @@ namespace Atelier2C6_101_2024
 
         public static Random rdm = new Random();
 
-        public const int ERR_DATE_NULLE = -1;
-        public const int ERR_DATE_INCOMPLETE = -2;
-        public const int ERR_ANNEE_HORS_LIMITE = -3;
-        public const int ERR_ANNEE_INVALIDE = -4;
-        public const int ERR_MOIS_HORS_LIMITE = -5;
+        public enum ERREUR
+        {
+          AUCUNE_ERREUR,
+          ERR_DATE_NULLE,
+          ERR_DATE_INCOMPLETE,
+          ERR_ANNEE_HORS_LIMITE,
+          ERR_ANNEE_INVALIDE,
+          ERR_MOIS_HORS_LIMITE,
+          ERR_MOIS_INVALIDE,
+          ERR_JOUR_HORS_LIMITE,
+          ERR_JOUR_INVALIDE
+        }
 
 
-        //-------------------------------
-        //
-        //-------------------------------
-        public static void ViderEcran()
+
+    //-------------------------------
+    //
+    //-------------------------------
+    public static void ViderEcran()
         {
             Console.Clear();
             Console.WriteLine("\x1b[3J");

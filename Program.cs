@@ -12,16 +12,32 @@ namespace Atelier2C6_101_2024
     {
         static void Main(string[] args)
         {
-            Ecran ecran = new Ecran();
-            ecran.Init(0,15);
-            bool go = true;
-            while (go)
-            {
+            try 
+            { 
+               Ecran ecran = new Ecran();
+               ecran.Init(0,15);
+               bool go = true;
+               while (go)
+               {
                 Util.Titrer("Atelier 2C6 gr 101");
                 AfficherMenu();
                 ExecuterChoix();
                 go = false;
+               }
             }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine($"{e.Message}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Une exception inconnue est survenue {e.Message}");
+            }
+            finally 
+            {
+                //Console.WriteLine("Derniere du prog");
+            }
+
         }
 
         //-------------------------------
@@ -38,6 +54,7 @@ namespace Atelier2C6_101_2024
             Console.WriteLine("X- TicTacToe");
             Console.WriteLine("O- Connect 4 ");
             Console.WriteLine("D- Dessiner à la console ");
+            Console.WriteLine("I- HérItage");
 
             Console.WriteLine();
 
@@ -89,6 +106,10 @@ namespace Atelier2C6_101_2024
                     ecran.Exec();
                     break;
 
+                case ("I"):
+                    ExecHeritage();
+                    break;
+
 
                 case ("Q"):
                 default:
@@ -96,6 +117,26 @@ namespace Atelier2C6_101_2024
                     break;
             }
         }
+
+        //-------------------------------
+        //
+        //-------------------------------
+        static void ExecHeritage()
+        { 
+            Util.Titrer("Héritage en C#");
+            Etudiant etuA = new Etudiant("1234567");
+            etuA.Afficher();
+
+            Etudiant etuB = new Etudiant("Gus", "7654321");
+            etuB.Afficher();
+
+            Etudiant etuC = new Etudiant("Bob", "22222222", new DateTime(2001, 9, 11));
+            etuC.Afficher();
+
+            Universitaire etuU = new Universitaire("Iossef Visarionovicth Djougachvili", "Sciences politique");
+            etuU.Afficher();
+        }
+
 
         //-------------------------------
         //
@@ -148,13 +189,13 @@ namespace Atelier2C6_101_2024
             Util.Titrer("Humanité");
 
             Humain h1 = new Humain("Albert", new DateTime(1889, 1, 1));
-            h1.Afficher();
+            //h1.Afficher();
 
             Humain h2 = new Humain("Béatrice");
-            h2.Afficher();
+            //h2.Afficher();
 
             Humain h3 = new Humain();
-            h3.Afficher();
+            //h3.Afficher();
 
 
             Util.Pause();

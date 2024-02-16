@@ -81,8 +81,8 @@ namespace Atelier2C6_101_2024
             _compteur++;
             _Nas = _compteur;
             _Residence = new Adresse(); 
-
         }
+
         //-------------------------------
         //
         //-------------------------------
@@ -92,8 +92,6 @@ namespace Atelier2C6_101_2024
             _compteur++;
             _Nas = _compteur;
             _Residence = new Adresse();
-
-
         }
 
         //-------------------------------
@@ -110,13 +108,13 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         //
         //-------------------------------
-        public Humain(string n, DateTime nais, Adresse naissance)
+        public Humain(string n, DateTime nais, Adresse residence)
         {
             _Nom = n;
             _Naissance = nais;
             _compteur++;
             _Nas = _compteur;
-            _Residence = naissance;
+            _Residence = residence;
         }
 
         //-------------------------------
