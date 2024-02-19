@@ -10,11 +10,15 @@ namespace Atelier2C6_101_2024
 {
     internal class Program
     {
+        static int _nbRang =0;
+        static int _nbCol = 0;
         static void Main(string[] args)
         {
+            bool ExecOK = true;
             try 
-            { 
-               Ecran ecran = new Ecran();
+            {
+              TraiterParam(args);
+              Ecran ecran = new Ecran();
                ecran.Init(0,15);
                bool go = true;
                while (go)
@@ -25,20 +29,71 @@ namespace Atelier2C6_101_2024
                 go = false;
                }
             }
+            catch(ArgumentOutOfRangeException e)
+            {
+                ExecOK = false;
+                Console.WriteLine($"ERREUR indice dépasse la taille d'un tableau {e.Message}");
+            }
             catch (FileNotFoundException e)
             {
+                ExecOK = false;
                 Console.WriteLine($"{e.Message}");
+            }
+            catch(FormatException e)
+            {
+                ExecOK = false;
+                Console.WriteLine($"Une conversion a échoué {e.Message}");
             }
             catch (Exception e)
             {
+                ExecOK = false;
                 Console.WriteLine($"Une exception inconnue est survenue {e.Message}");
             }
             finally 
             {
+                if (ExecOK)
+                {
+                    Console.WriteLine("Fin normale!");
+                }
+                else
+                {
+                    Console.WriteLine("ATTENTION Programme avorté...");    
+                }
                 //Console.WriteLine("Derniere du prog");
             }
 
         }
+
+        //-------------------------------
+        //
+        //-------------------------------
+        static void TraiterParam(string[] tabParams)
+        {
+            Console.WriteLine($"{tabParams.Length} paramètres:");
+            for (int i = 0; i < tabParams.Length; i++) 
+            {
+                Console.WriteLine($"args[{i}]: {tabParams[i]}");
+            }
+
+            Console.WriteLine($"Largeur: {(Console.WindowWidth / 4) -1}");
+            Console.WriteLine($"Hauteur: {(Console.WindowHeight -6) -1 }");
+
+
+            _nbCol = int.Parse(tabParams[0]);
+            _nbRang = int.Parse(tabParams[1]);
+
+            if (_nbCol > Console.WindowWidth / 4)
+            {
+                //throw (new Exception($"Param 0 trop grand maximum = {Console.WindowWidth / 4}"));
+            }
+            if (_nbRang > Console.WindowHeight - 6)
+            {
+                //throw (new Exception($"Param 1 trop grand maximum = {Console.WindowHeight - 6}"));
+            }
+            Util.Pause();
+        }
+
+
 
         //-------------------------------
         //
@@ -55,6 +110,7 @@ namespace Atelier2C6_101_2024
             Console.WriteLine("O- Connect 4 ");
             Console.WriteLine("D- Dessiner à la console ");
             Console.WriteLine("I- HérItage");
+            Console.WriteLine("A- tAbleau 2D");
 
             Console.WriteLine();
 
@@ -105,9 +161,11 @@ namespace Atelier2C6_101_2024
                     Ecran ecran = new Ecran();
                     ecran.Exec();
                     break;
-
                 case ("I"):
                     ExecHeritage();
+                    break;
+                case ("A"):
+                    ExecTableau2D();
                     break;
 
 
@@ -121,9 +179,33 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         //
         //-------------------------------
+        static void ExecTableau2D()
+        {
+            Util.Titrer("Tableau à deux dimension en C#");
+            Tableau2D tab2D = new Tableau2D(_nbCol, _nbRang);
+
+            tab2D.Afficher();
+            Util.Pause();
+
+            Util.Titrer("Affichage horizontal"); 
+            tab2D.AfficherHorizontalement();
+            Util.Pause();
+
+            Util.Titrer("Affichage vertical");
+            tab2D.AfficherVertical();
+            Util.Pause();
+
+            Util.Titrer("Affichage aléatoire");
+            tab2D.AfficherAleatoire();
+            Util.Pause();
+
+        }
+        //-------------------------------
+        //
+        //-------------------------------
         static void ExecHeritage()
-        { 
-            Util.Titrer("Héritage en C#");
+            {
+                Util.Titrer("Héritage en C#");
             Etudiant etuA = new Etudiant("1234567");
             etuA.Afficher();
 
