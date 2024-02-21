@@ -57,7 +57,8 @@ namespace Atelier2C6_101_2024
 
             if (this._Nom.Length > other._Nom.Length) return 1;
 
-            return 0;
+            return _Nom.CompareTo(other._Nom);  
+          
         }
 
         //-------------------------------
