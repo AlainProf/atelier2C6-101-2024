@@ -69,6 +69,10 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         static void TraiterParam(string[] tabParams)
         {
+            if (tabParams.Length == 0) 
+            {
+                return;
+            }
             Console.WriteLine($"{tabParams.Length} paramètres:");
             for (int i = 0; i < tabParams.Length; i++) 
             {
@@ -111,6 +115,7 @@ namespace Atelier2C6_101_2024
             Console.WriteLine("D- Dessiner à la console ");
             Console.WriteLine("I- HérItage");
             Console.WriteLine("A- tAbleau 2D");
+            Console.WriteLine("P- Pile et File (Stack % Queue");
 
             Console.WriteLine();
 
@@ -167,6 +172,9 @@ namespace Atelier2C6_101_2024
                 case ("A"):
                     ExecTableau2D();
                     break;
+                case ("P"):
+                    ExecPileFile();
+                    break;
 
 
                 case ("Q"):
@@ -179,8 +187,67 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         //
         //-------------------------------
-        static void ExecTableau2D()
+        static void ExecPileFile()
         {
+            Util.Titrer("Piles et Files en C#");
+
+            Queue<Voiture> laveAuto = new Queue<Voiture>();
+
+            Voiture vA = new Voiture();
+            vA._Marque = "GT3 RS";
+            vA._Couleur = "noire";
+            Voiture vB = new Voiture();
+            vB._Marque = "Ford Focus";
+            vB._Couleur = "blanche";
+            Voiture vC = new Voiture();
+            vC._Marque = "Pinto";
+            vC._Couleur = "mauve";
+
+            laveAuto.Enqueue(vA);
+            laveAuto.Enqueue(vB);
+            laveAuto.Enqueue(vC);
+
+
+            Console.WriteLine("-----Sortie du lave auto-----------");
+
+
+            Voiture vPropre = laveAuto.Dequeue();
+            vPropre.Afficher();
+
+            vPropre = laveAuto.Dequeue();
+            vPropre.Afficher();
+
+            vPropre = laveAuto.Dequeue();
+            vPropre.Afficher();
+
+            Stack<Voiture> _AlleeStationnement = new Stack<Voiture>();
+
+            Console.WriteLine("------Sortie du stationnement----------");
+
+            _AlleeStationnement.Push(vA);
+            _AlleeStationnement.Push(vB);
+            _AlleeStationnement.Push(vC);
+
+            Voiture vQuittante;
+            vQuittante = _AlleeStationnement.Pop();
+            vQuittante.Afficher();
+            vQuittante = _AlleeStationnement.Pop();
+            vQuittante.Afficher();
+            vQuittante = _AlleeStationnement.Pop();
+            vQuittante.Afficher();
+
+            
+
+
+
+
+        }
+
+        //-------------------------------
+        //
+        //-------------------------------
+        static void ExecTableau2D()
+         {
             Util.Titrer("Tableau à deux dimension en C#");
             Tableau2D tab2D = new Tableau2D(_nbCol, _nbRang);
 

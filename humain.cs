@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Atelier2C6_101_2024
 {
-    internal class Humain
+    internal class Humain : IComparable<Humain>
     {
 
         /* 
@@ -27,10 +27,10 @@ namespace Atelier2C6_101_2024
         {
             _nom = nom;
         }
-        */
+        
 
         // Méthode property
-        /*
+        
         private string _nom;
         public string _Nom
         {
@@ -50,6 +50,15 @@ namespace Atelier2C6_101_2024
         public Adresse _Residence { get; set; }
 
         static int _compteur=0;
+
+        public int CompareTo(Humain other)
+        {
+            if (this._Nom.Length < other._Nom.Length) return -1;
+
+            if (this._Nom.Length > other._Nom.Length) return 1;
+
+            return 0;
+        }
 
         //-------------------------------
         //
@@ -128,12 +137,15 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         //
         //-------------------------------
-        public void Afficher()
+        public void Afficher(bool afficherAdresse = false)
         {
             Console.WriteLine(_Nom + "(" + _Nas + ") né le " +  _Naissance.ToShortDateString() + " agé de " + Age() + " ans ");
 
-            if (_Residence._NumCivique != "0")
-               _Residence.Afficher();
+            if (afficherAdresse)
+            {
+                if (_Residence._NumCivique != "0")
+                    _Residence.Afficher();
+            }
         }
 
         //-------------------------------

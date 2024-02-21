@@ -37,8 +37,16 @@ namespace Atelier2C6_101_2024
             _lstHumains[9]._Nom = "Zébulon";
             _lstHumains[9]._Residence = new Adresse("485 app 32", "rue Fournier", "Singe et Rum", "Québec", "J7Z 4V2" );
 
-            Util.SepST("Liste humain initale");
+            Util.SepST("Liste humain initiale");
             AfficherListeHumain();
+            Util.Pause();
+
+            Util.SepST("Liste humain triée par age");
+            _lstHumains.Sort();
+            AfficherListeHumain();
+
+            Util.Pause();
+
 
             Util.SepST("Liste humain triée (ordre alpha)");
             _lstHumains.Sort(CompareHumain);
@@ -85,18 +93,20 @@ namespace Atelier2C6_101_2024
 
             Util.SepST("Liste initale");
             AfficherListe();
+            Util.Pause();
 
             Util.SepST("Liste triée");
             _lstEntiers.Sort();
             AfficherListe();
+            Util.Pause();
 
-            Util.SepST("Liste inversée");
+            /* Util.SepST("Liste inversée");
             _lstEntiers.Reverse();
             AfficherListe();
 
             Util.SepST("Liste Clearée");
             _lstEntiers.Clear();
-            AfficherListe();
+            AfficherListe();*/
 
         }
 
@@ -114,7 +124,7 @@ namespace Atelier2C6_101_2024
             {
                 if (_lstHumains[i] != null)
                 {
-                   // _lstHumains[i].Afficher();
+                   _lstHumains[i].Afficher();
                 }
                 else
                 {
