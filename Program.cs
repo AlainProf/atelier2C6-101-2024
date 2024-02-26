@@ -4,7 +4,10 @@
 //  Création: 2024-01-31 
 //-------------------------------
 
+using Atelier2C6_101_2024.Application;
+using Atelier2C6_101_2024.Classes;
 using Atelier2C6_101_2024.Connect4;
+using Atelier2C6_101_2024.Exploration;
 
 namespace Atelier2C6_101_2024
 {
@@ -12,6 +15,10 @@ namespace Atelier2C6_101_2024
     {
         static int _nbRang =0;
         static int _nbCol = 0;
+        static Util u = new Util();
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         static void Main(string[] args)
         {
             bool ExecOK = true;
@@ -23,7 +30,7 @@ namespace Atelier2C6_101_2024
                bool go = true;
                while (go)
                {
-                Util.Titrer("Atelier 2C6 gr 101");
+                u.Titrer("Atelier 2C6 gr 101");
                 AfficherMenu();
                 ExecuterChoix();
                 go = false;
@@ -61,7 +68,6 @@ namespace Atelier2C6_101_2024
                 }
                 //Console.WriteLine("Derniere du prog");
             }
-
         }
 
         //-------------------------------
@@ -94,7 +100,7 @@ namespace Atelier2C6_101_2024
             {
                 //throw (new Exception($"Param 1 trop grand maximum = {Console.WindowHeight - 6}"));
             }
-            Util.Pause();
+            u.Pause();
         }
 
 
@@ -130,7 +136,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         static void ExecuterChoix()
         {
-            char choix = Util.SaisirChar();
+            char choix = u.SaisirChar();
             string option = choix.ToString().ToUpper();
 
             switch(option)
@@ -142,13 +148,13 @@ namespace Atelier2C6_101_2024
                     ExecHumanite();
                     break;
                 case ("T"):
-                    ExploTableau.Exec();
+                    ExploTableau();
                     break;
                 case ("L"):
-                    ExploListe.Exec();
+                    ExploListe();
                     break;
                 case ("E"):
-                    ExploFichier.Exec();
+                    ExploFichier();
                     break;
                 case ("R"):
                     ExploRefEtOut();
@@ -176,7 +182,6 @@ namespace Atelier2C6_101_2024
                     ExecPileFile();
                     break;
 
-
                 case ("Q"):
                 default:
                     Environment.Exit(0);
@@ -184,12 +189,40 @@ namespace Atelier2C6_101_2024
             }
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+        static void ExploFichier()
+        {
+            ExploFichier exploFichier = new ExploFichier();
+            exploFichier.Exec();
+        }
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+        static void ExploTableau()
+        {
+            ExploTableau exploTableau = new ExploTableau();
+            exploTableau.Exec();
+          
+        }
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+        static void ExploListe()
+        {
+            ExploListe exploListe = new ExploListe();
+            exploListe.Exec();
+          
+        }
+
+
         //-------------------------------
         //
         //-------------------------------
         static void ExecPileFile()
         {
-            Util.Titrer("Piles et Files en C#");
+            u.Titrer("Piles et Files en C#");
 
             Queue<Voiture> laveAuto = new Queue<Voiture>();
 
@@ -235,12 +268,6 @@ namespace Atelier2C6_101_2024
             vQuittante.Afficher();
             vQuittante = _AlleeStationnement.Pop();
             vQuittante.Afficher();
-
-            
-
-
-
-
         }
 
         //-------------------------------
@@ -248,23 +275,23 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         static void ExecTableau2D()
          {
-            Util.Titrer("Tableau à deux dimension en C#");
+            u.Titrer("Tableau à deux dimension en C#");
             Tableau2D tab2D = new Tableau2D(_nbCol, _nbRang);
 
             tab2D.Afficher();
-            Util.Pause();
+            u.Pause();
 
-            Util.Titrer("Affichage horizontal"); 
+            u.Titrer("Affichage horizontal"); 
             tab2D.AfficherHorizontalement();
-            Util.Pause();
+            u.Pause();
 
-            Util.Titrer("Affichage vertical");
+            u.Titrer("Affichage vertical");
             tab2D.AfficherVertical();
-            Util.Pause();
+            u.Pause();
 
-            Util.Titrer("Affichage aléatoire");
+            u.Titrer("Affichage aléatoire");
             tab2D.AfficherAleatoire();
-            Util.Pause();
+            u.Pause();
 
         }
         //-------------------------------
@@ -272,7 +299,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         static void ExecHeritage()
             {
-                Util.Titrer("Héritage en C#");
+                u.Titrer("Héritage en C#");
             Etudiant etuA = new Etudiant("1234567");
             etuA.Afficher();
 
@@ -292,7 +319,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         static void ExploRefEtOut()
         {
-            Util.Titrer("Exemple d'utilisation de ref et out");
+            u.Titrer("Exemple d'utilisation de ref et out");
 
             int p = 10;
             Console.WriteLine($"valeur initiale de P:{p}");
@@ -335,7 +362,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         static void ExecHumanite()
         {
-            Util.Titrer("Humanité");
+            u.Titrer("Humanité");
 
             Humain h1 = new Humain("Albert", new DateTime(1889, 1, 1));
             //h1.Afficher();
@@ -345,11 +372,7 @@ namespace Atelier2C6_101_2024
 
             Humain h3 = new Humain();
             //h3.Afficher();
-
-
-            Util.Pause();
+            u.Pause();
         }
-
-
     }
 }

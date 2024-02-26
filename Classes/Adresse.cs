@@ -1,10 +1,18 @@
-﻿using System;
+﻿//-------------------------------
+//  Fichier .cs
+//  Auteur: Alain Martel
+//  Création: 2024-02-26 
+//-------------------------------
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Atelier2C6_101_2024
+namespace Atelier2C6_101_2024.Classes
 {
     internal class Adresse
     {
@@ -14,7 +22,10 @@ namespace Atelier2C6_101_2024
         public string _Province { get; set; }
         public string _CodePostal { get; set; }
 
-        public Adresse() 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+        public Adresse()
         {
             _NumCivique = "0";
             _Rue = "inconnue";
@@ -23,7 +34,10 @@ namespace Atelier2C6_101_2024
             _CodePostal = "A1a1a1";
         }
 
-        public Adresse(string n, string r, string v, string p, string c  )
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+        public Adresse(string n, string r, string v, string p, string c)
         {
             _NumCivique = n;
             _Rue = r;
@@ -32,12 +46,12 @@ namespace Atelier2C6_101_2024
             _CodePostal = c;
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         public void Afficher()
         {
             Console.WriteLine("{0} {1}\n{2}\n{3}\n{4}", _NumCivique, _Rue, _Ville, _Province, _CodePostal);
         }
-
-
-
     }
 }

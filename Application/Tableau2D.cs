@@ -1,25 +1,34 @@
-﻿using System;
+﻿//-------------------------------
+//  Fichier .cs
+//  Auteur: Alain Martel
+//  Création: 2024-02-26 
+//-------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Atelier2C6_101_2024
+namespace Atelier2C6_101_2024.Application
 {
     internal class Tableau2D
     {
         readonly int NB_RANGEES;
         readonly int NB_COLONNES;
         char[,] _grille;
+        Util u = new Util();
 
-        public Tableau2D(int nbCol, int nbRang) 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+        public Tableau2D(int nbCol, int nbRang)
         {
             NB_COLONNES = nbCol;
             NB_RANGEES = nbRang;
 
             _grille = new char[NB_COLONNES, NB_RANGEES];
 
-            for (int i = 0; i < NB_COLONNES; i++) 
+            for (int i = 0; i < NB_COLONNES; i++)
             {
                 for (int j = 0; j < NB_RANGEES; j++)
                 {
@@ -28,6 +37,9 @@ namespace Atelier2C6_101_2024
             }
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         public void Afficher()
         {
             for (int i = 0; i < NB_COLONNES; i++)
@@ -39,6 +51,9 @@ namespace Atelier2C6_101_2024
             }
 
         }
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         public void AfficherHorizontalement()
         {
             char dec;
@@ -51,12 +66,15 @@ namespace Atelier2C6_101_2024
                         dec = 'o';
 
                     _grille[i, j] = dec;
-                    
+
                     EcrireCase(i, j);
                 }
             }
 
         }
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         public void AfficherVertical()
         {
             char dec;
@@ -73,15 +91,19 @@ namespace Atelier2C6_101_2024
                 }
             }
         }
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         public void AfficherAleatoire()
         {
-            
+
             for (int i = 0; i < NB_COLONNES; i++)
             {
                 for (int j = 0; j < NB_RANGEES; j++)
                 {
-                    int dec = Util.rdm.Next(0, 3);
-                    switch(dec)
+                    
+                    int dec = u.rdm.Next(0, 3);
+                    switch (dec)
                     {
                         case 0:
                             _grille[i, j] = 'o';
@@ -98,10 +120,13 @@ namespace Atelier2C6_101_2024
             }
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         private void EcrireCase(int x, int y)
         {
-            Console.SetCursorPosition(x * 4,y + 6);
-            Console.Write($"_{_grille[x,y]}_|");
+            Console.SetCursorPosition(x * 4, y + 6);
+            Console.Write($"_{_grille[x, y]}_|");
         }
     }
 }

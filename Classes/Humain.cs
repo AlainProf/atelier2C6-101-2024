@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Atelier2C6_101_2024
+namespace Atelier2C6_101_2024.Classes
 {
     internal class Humain : IComparable<Humain>
     {
@@ -41,37 +41,44 @@ namespace Atelier2C6_101_2024
 
         // Méthode property auto
 
-        public string _Nom {  get; set; }   
+        public string _Nom { get; set; }
 
         public DateTime _Naissance { get; set; }
         public DateTime _Deces { get; set; }
-        public int _Nas { get;  set; }
+        public int _Nas { get; set; }
 
         public Adresse _Residence { get; set; }
 
-        static int _compteur=0;
+        static int _compteur = 0;
 
-        public int CompareTo(Humain other)
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+        public int CompareTo(Humain? other)
         {
-            if (this._Nom.Length < other._Nom.Length) return -1;
+            if (other == null)
+            {
+                return 1;
+            }
+            if (_Nom.Length < other._Nom.Length) return -1;
 
-            if (this._Nom.Length > other._Nom.Length) return 1;
+            if (_Nom.Length > other._Nom.Length) return 1;
 
-            return _Nom.CompareTo(other._Nom);  
-          
+            return _Nom.CompareTo(other._Nom);
+
         }
 
         //-------------------------------
         //
         //-------------------------------
-        public static int comparer(Humain humA, Humain humB)
+        public int comparer(Humain humA, Humain humB)
         {
             return humA._Nom.CompareTo(humB._Nom);
         }
         //-------------------------------
         //
         //-------------------------------
-        public static int comparerAge(Humain humA, Humain humB)
+        public int comparerAge(Humain humA, Humain humB)
         {
             if (humA._Naissance < humB._Naissance)
                 return -1;
@@ -87,10 +94,10 @@ namespace Atelier2C6_101_2024
         public Humain()
         {
             _Nom = "incognito";
-            _Naissance = new DateTime(1,1,1);
+            _Naissance = new DateTime(1, 1, 1);
             _compteur++;
             _Nas = _compteur;
-            _Residence = new Adresse(); 
+            _Residence = new Adresse();
         }
 
         //-------------------------------
@@ -132,7 +139,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         public void Mourir()
         {
-            _Deces = DateTime.Now;   
+            _Deces = DateTime.Now;
         }
 
         //-------------------------------
@@ -140,7 +147,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         public void Afficher(bool afficherAdresse = false)
         {
-            Console.WriteLine(_Nom + "(" + _Nas + ") né le " +  _Naissance.ToShortDateString() + " agé de " + Age() + " ans ");
+            Console.WriteLine(_Nom + "(" + _Nas + ") né le " + _Naissance.ToShortDateString() + " agé de " + Age() + " ans ");
 
             if (afficherAdresse)
             {
@@ -154,12 +161,15 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         private int Age()
         {
-            double delta = DateTime.Now.Ticks - _Naissance.Ticks;  
+            double delta = DateTime.Now.Ticks - _Naissance.Ticks;
 
-            int deltaAn = (int) (delta  / 10000000 / (60 * 60 * 24 * 365.24));
+            int deltaAn = (int)(delta / 10000000 / (60 * 60 * 24 * 365.24));
             return deltaAn;
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         public DateTime GetNaissance()
         {
             return _Naissance;

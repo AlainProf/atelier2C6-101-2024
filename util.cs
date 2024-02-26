@@ -1,5 +1,5 @@
 ﻿//-------------------------------
-//  Fichier Util.cs
+//  Fichier u.cs
 //  Auteur: Alain Martel
 //  Création: 2024-01-31 
 //-------------------------------
@@ -14,10 +14,10 @@ namespace Atelier2C6_101_2024
 {
     internal class Util
     {
-        public static string[] _noms = new string[] {"Esteban", "Etienne", "Raphael", "Liliane", "Samuel", "Félix", "Georges",
+        public string[] _noms = new string[] {"Esteban", "Etienne", "Raphael", "Liliane", "Samuel", "Félix", "Georges",
         "Charles-Etienne", "Fernando", "Nizar"};
 
-        public static Random rdm = new Random();
+        public Random rdm = new Random();
 
         public enum ERREUR
         {
@@ -37,7 +37,7 @@ namespace Atelier2C6_101_2024
     //-------------------------------
     //
     //-------------------------------
-    public static void ViderEcran()
+    public void ViderEcran()
         {
             Console.Clear();
             Console.WriteLine("\x1b[3J");
@@ -46,7 +46,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         //
         //-------------------------------
-        public static void Titrer(string leTitre)
+        public void Titrer(string leTitre)
         {
             ViderEcran();
             Console.WriteLine(leTitre);
@@ -60,7 +60,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         //
         //-------------------------------
-        public static char SaisirChar()
+        public char SaisirChar()
         {
             ConsoleKeyInfo keyInfo;
             keyInfo = Console.ReadKey();
@@ -70,7 +70,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         //
         //-------------------------------
-        public static double SaisirUnDouble(string nomDuDouble)
+        public double SaisirUnDouble(string nomDuDouble)
         {
             Console.WriteLine(nomDuDouble + ":");
             string? input = Console.ReadLine();
@@ -86,7 +86,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         //
         //-------------------------------
-        public static void Pause()
+        public void Pause()
         {
             Console.WriteLine(" appuyer une touche...");
             Console.ReadKey();
@@ -95,17 +95,9 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         //
         //-------------------------------
-        public static void SepST(string s)
-        {
-            Console.WriteLine("------------" + s + "------------");
-        }
-        //-------------------------------
-        //
-        //-------------------------------
         public void Sep(string s)
         {
             Console.WriteLine("***********" + s + "************");
         }
-
     }
 }

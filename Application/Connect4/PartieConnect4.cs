@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-------------------------------
+//  Fichier .cs
+//  Auteur: Alain Martel
+//  Création: 2024-02-26 
+//-------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +14,17 @@ namespace Atelier2C6_101_2024.Connect4
 {
     internal class PartieConnect4
     {
-        Grille _grille;
+        Grille _grille = new Grille();
         bool _partieEnCours;
         char _joueurCourant = 'x';
+        Util u = new Util();
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         public void Jouer()
         {
-            Util.Titrer(" .... C O N N E C T - 4 \n Par Alain Martel");
+            u.Titrer(" .... C O N N E C T - 4 \n Par Alain Martel");
 
             _partieEnCours = true;
             _grille = new Grille();
@@ -36,23 +46,33 @@ namespace Atelier2C6_101_2024.Connect4
             }
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         void InsererJeton(char col, char joueur)
         {
             _grille.InsererJeton(col, joueur);
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         char SaisirDecision()
         {
-            
-            
             return 'A';
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         bool Valider(char dec) 
         {
             return true;
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         bool CoupGagnant() { 
             return true;    
         }

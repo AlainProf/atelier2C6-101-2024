@@ -1,4 +1,9 @@
-﻿using System;
+﻿//-------------------------------
+//  Fichier .cs
+//  Auteur: Alain Martel
+//  Création: 2024-02-26 
+//-------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +15,9 @@ namespace Atelier2C6_101_2024.Connect4
     {
         int _numero;
         Case[] _cases = new Case[Grille.NB_RANGEES];
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         public Colonne(int numColonne) 
         {
             _numero = numColonne;
@@ -17,8 +25,11 @@ namespace Atelier2C6_101_2024.Connect4
             {
                 _cases[i] = new Case(_numero, i); 
             }
-        } 
-        
+        }
+
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         public void Afficher() 
         {
             for(int i=0;i<Grille.NB_RANGEES;i++)
@@ -27,6 +38,9 @@ namespace Atelier2C6_101_2024.Connect4
             }
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         public void InsererJeton(char joueur)
         {
             _cases[0]._Contenu = joueur;

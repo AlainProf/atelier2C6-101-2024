@@ -9,11 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Atelier2C6_101_2024
+namespace Atelier2C6_101_2024.Application
 {
     internal class Financier
     {
         double _detteInitiale;
+        Util u = new Util();
         //-------------------------------
         //
         //-------------------------------
@@ -23,14 +24,14 @@ namespace Atelier2C6_101_2024
 
             while (go)
             {
-                Util.Titrer("Le Financier");
+                u.Titrer("Le Financier");
                 AfficherMenu();
                 string option = ExecuterChoix();
                 if (option == "Q")
                 {
                     break;
                 }
-                Util.Pause();
+                u.Pause();
             }
         }
 
@@ -49,23 +50,23 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         string ExecuterChoix()
         {
-            char choix = Util.SaisirChar();
+            char choix = u.SaisirChar();
             string option = choix.ToString().ToUpper();
 
             switch (option)
             {
-                case ("D"):
+                case "D":
                     CalculerDette();
                     break;
-                case ("P"):
+                case "P":
                     CalculerPlacement();
                     break;
-                case ("Q"):
+                case "Q":
                 default:
                     break;
             }
-            
-            
+
+
             return option;
         }
 
@@ -81,7 +82,7 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         void CalculerDette()
         {
-            Util.Titrer("Calcul d'une dette");
+            u.Titrer("Calcul d'une dette");
             SaisirParametres();
 
             double tauxInteretAnnuel = 0.21;
@@ -119,8 +120,8 @@ namespace Atelier2C6_101_2024
         //-------------------------------
         void SaisirParametres()
         {
-            
-            _detteInitiale = Util.SaisirUnDouble("\nMontant de la dette");
+
+            _detteInitiale = u.SaisirUnDouble("\nMontant de la dette");
             //Console.WriteLine("Votre dette saisie:" + dette + "$");
 
         }

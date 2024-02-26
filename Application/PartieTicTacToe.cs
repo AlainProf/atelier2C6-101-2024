@@ -1,16 +1,25 @@
-﻿using System;
+﻿//-------------------------------
+//  Fichier .cs
+//  Auteur: Alain Martel
+//  Création: 2024-02-26 
+//-------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Atelier2C6_101_2024
+namespace Atelier2C6_101_2024.Application
 {
     internal class PartieTicTacToe
     {
         char _joueurCourant = 'X';
         char[] _cases = new char[] { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+        Util u = new Util();
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         public void Jouer()
         {
 
@@ -35,6 +44,9 @@ namespace Atelier2C6_101_2024
             }
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         bool CoupGagnant()
         {
             // Victoire 0
@@ -49,47 +61,46 @@ namespace Atelier2C6_101_2024
                 if (_cases[3] == _cases[4] && _cases[3] == _cases[5])
                     return true;
             }
-
-
-
-            // Victoire 2
-            // Victoire 3
-            // Victoire 4
-            // Victoire 5
-            // Victoire 6
-            // Victoire 7
-
-            return false;   
+            return false;
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         void ProchainCoup()
         {
             Console.WriteLine($"\n à {_joueurCourant} de jouer (0 à 8):");
 
             char coup = 'Q';
-            while(!CoupLegal(coup))
-                coup = Util.SaisirChar();
+            while (!CoupLegal(coup))
+                coup = u.SaisirChar();
 
             int idx = int.Parse(coup.ToString());
 
-            _cases[idx] = _joueurCourant;       
+            _cases[idx] = _joueurCourant;
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         bool CoupLegal(char coup)
         {
             if (coup != '0' && coup != '1' && coup != '2' && coup != '3' && coup != '4' && coup != '5' && coup != '6' && coup != '7' && coup != '8')
-               return false;
+                return false;
 
             int idx = int.Parse(coup.ToString());
             if (_cases[idx] != ' ')
-                return false;   
+                return false;
 
             return true;
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
         void DessinerGrille()
         {
-            Util.Titrer("Partie de TicTacToe opposant Xavier et Olivier");
+            u.Titrer("Partie de TicTacToe opposant Xavier et Olivier");
 
             Console.WriteLine("\n");
 
