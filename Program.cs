@@ -5,6 +5,7 @@
 //-------------------------------
 
 using Atelier2C6_101_2024.Application;
+using Atelier2C6_101_2024.Application.Poker;
 using Atelier2C6_101_2024.Classes;
 using Atelier2C6_101_2024.Connect4;
 using Atelier2C6_101_2024.Exploration;
@@ -122,6 +123,8 @@ namespace Atelier2C6_101_2024
             Console.WriteLine("I- HérItage");
             Console.WriteLine("A- tAbleau 2D");
             Console.WriteLine("P- Pile et File (Stack % Queue");
+            Console.WriteLine("K- Poker");
+
 
             Console.WriteLine();
 
@@ -181,6 +184,9 @@ namespace Atelier2C6_101_2024
                 case ("P"):
                     ExecPileFile();
                     break;
+                case ("K"):
+                    ExecPoker();
+                    break;
 
                 case ("Q"):
                 default:
@@ -189,6 +195,14 @@ namespace Atelier2C6_101_2024
             }
         }
 
+        //--------------------------------------------
+        //
+        //--------------------------------------------
+        static void ExecPoker()
+        {
+            PartiePoker pp = new PartiePoker();
+            pp.Jouer();
+        }
         //--------------------------------------------
         //
         //--------------------------------------------
