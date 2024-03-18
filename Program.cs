@@ -55,13 +55,13 @@ namespace Atelier2C6_101_2024
             catch (Exception e)
             {
                 ExecOK = false;
-                Console.WriteLine($"Une exception inconnue est survenue {e.Message}");
+                Console.WriteLine($"Une exception inconnue est survenue {e}");
             }
             finally 
             {
                 if (ExecOK)
                 {
-                    Console.WriteLine("Fin normale!");
+                    Console.WriteLine("\n\nFin normale!");
                 }
                 else
                 {

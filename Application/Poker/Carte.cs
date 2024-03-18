@@ -15,6 +15,14 @@ namespace Atelier2C6_101_2024.Application.Poker
 
         string _valeurTexte = "2";
         string _sorteTexte = "Pique";
+
+        const int COULEUR_PIQUE = 0;
+        const int COULEUR_TREFLE = (int)ConsoleColor.DarkBlue;
+        const int COULEUR_CARREAU = (int)ConsoleColor.Red;
+        const int COULEUR_COEUR = (int)ConsoleColor.DarkRed;
+      
+
+
         const int LARGEUR_CARTE = 5;
 
         public Carte(int sorte = 0, int valeur = 0) 
@@ -23,34 +31,35 @@ namespace Atelier2C6_101_2024.Application.Poker
             _Valeur = valeur;   
         }
 
-        public void Afficher(int decalage=0, bool graphique = true)
+        public void Afficher(bool graphique = true, int posX=0,int posY=0)
         {
             SetValeurTexte();
             SetSorteTexte();
             if (graphique)
             {
+                Console.BackgroundColor = ConsoleColor.White;
                 switch (_Sorte)
                 {
                     case 0:
-                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.Black;
                         break;
                     case 1:
-                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                        Console.ForegroundColor = ConsoleColor.Black;
                         break;
                     case 2:
-                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         break;
                     case 3:
-                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         break;
                 }
-
-                Console.SetCursorPosition(1 + (decalage * LARGEUR_CARTE), 3);
+                //Console.Clear();
+                Console.SetCursorPosition(posX * (LARGEUR_CARTE + 1), (posY *4) + 3);
                 Console.Write(_valeurTexte);
                 Console.Write("    ");
-                Console.SetCursorPosition(1 + (decalage * LARGEUR_CARTE), 4);
-                Console.Write("  ♥  ");
-                Console.SetCursorPosition(1 + (decalage * LARGEUR_CARTE), 5);
+                Console.SetCursorPosition(posX * (LARGEUR_CARTE + 1), (posY * 4) + 4);
+                Console.Write($"  {GetSymbole()}  ");
+                Console.SetCursorPosition(posX * (LARGEUR_CARTE + 1), (posY * 4) + 5);
                 Console.Write("    ");
                 Console.Write(_valeurTexte);
             }
@@ -58,7 +67,24 @@ namespace Atelier2C6_101_2024.Application.Poker
             {
                 Console.WriteLine($"\n{_valeurTexte} de {_sorteTexte}");
             }
+        }
 
+        char GetSymbole()
+        {
+            //♥♣♦♠
+            switch ( _Sorte)
+            {
+                case 0:
+                    return '♠';
+                case 1:
+                    return '♣';
+                case 2:
+                    return '♦';
+                case 3:
+                    return '♥';
+                default:
+                    return '♠';
+            }
         }
 
         private void SetValeurTexte()

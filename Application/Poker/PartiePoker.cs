@@ -12,28 +12,44 @@ namespace Atelier2C6_101_2024.Application.Poker
         const int COULEUR_TEXTE = 15; // Blanc
         const int NB_CARTE_DANS_UNE_MAIN = 5;
         const int NB_CARTE_DANS_UN_PAQUET = 52;
+
+        MainJoueur[] _mainsJoueurs = new MainJoueur[4];
+
+        Paquet lePaquet = new Paquet();
+
+        public PartiePoker()
+        {
+            for(int i=0; i<4; i++)
+            {
+                _mainsJoueurs[i] = new MainJoueur(i);
+            }
+        }
         public void Jouer()
         {
-            InitTable();
             Util u = new Util();
             u.Titrer("Poker 2C6 ");
-            
-            Carte[] uneMain = new Carte[NB_CARTE_DANS_UNE_MAIN];
+            InitTable();
 
-            uneMain[0] = new Carte(0, 0);
-            uneMain[1] = new Carte(1, 12);
-            uneMain[2] = new Carte(2, 8);
-            uneMain[3] = new Carte(3, 10);
-            uneMain[4] = new Carte(0, 1);
-
-            InitTable(); 
-
-            for(int i=0; i<uneMain.Length;i++)
+            /*lePaquet.Afficher();
+            while (true)
             {
-                uneMain[i].Afficher(i);
+                Console.ReadKey();
+                lePaquet.Afficher();
+            }*/
+
+            lePaquet.Brasser();
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    _mainsJoueurs[j].InitCarte(i, lePaquet.Distribuer());
+                }
             }
 
-            Console.WriteLine();
+            for (int i = 0; i < 4; i++)
+            {
+               _mainsJoueurs[i].Afficher();
+            }
         }
 
         void InitTable()
@@ -43,6 +59,7 @@ namespace Atelier2C6_101_2024.Application.Poker
 
             // a ligne suivante permet d'afficher des symboles unicode (coeur trèfle etc...
             Console.OutputEncoding = System.Text.Encoding.Unicode;
+            Console.Clear();
         }
     }
 }
